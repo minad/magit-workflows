@@ -13,7 +13,9 @@
         (let ((dep (match-string 1)))
           (msg "• Cloning %s" dep)
           (run "git" "clone" "--depth" "1"
-               (concat "https://github.com/emacsmirror/" dep)
+               (if (equal dep "compat")
+                   "https://github.com/emacs-compat/compat"
+                 (concat "https://github.com/emacsmirror/" dep))
                (concat "../" dep)))))))
 
 (kill-emacs (catch 'return (prog1 0 (main))))
