@@ -24,7 +24,7 @@ jobs:
       - name: 'Install workflow scripts'
         uses: actions/checkout@v3
         with:
-          repository: emacscollective/workflows
+          repository: minad/magit-workflows
           ref: ${{ inputs.workflow_ref }}
           path: _scripts
           persist-credentials: false
@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{ env.pwd }}
         run: |
           ../_scripts/bin/get-matrix >> $GITHUB_OUTPUT
-          echo "• get-matrix: emacscollective/workflows@${{ inputs.workflow_ref }}"
+          echo "• get-matrix: minad/magit-workflows@${{ inputs.workflow_ref }}"
   main:
     name: 'Testing using Emacs ${{ matrix.emacs }}'
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
       - name: 'Checkout scripts'
         uses: actions/checkout@v3
         with:
-          repository: emacscollective/workflows
+          repository: minad/magit-workflows
           ref: ${{ inputs.workflow_ref }}
           path: _scripts
           persist-credentials: false
